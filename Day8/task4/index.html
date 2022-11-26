@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html onload="we()">
+    <head>
+        <title> Custom event </title>
+        <style>
+            label{
+                display: inline-block;
+                width: 70px;
+            }
+            form{
+                display: inline-block;
+                padding: 20px;
+                border: 2px dashed deeppink;
+                width: 500px;
+                margin-left: 450px;
+                background-color:ivory;
+                margin-top: 100px;
+            }
+
+            button{
+                background-color: lightcoral;
+                border: none;
+                padding: 5px;
+                color: #fff;
+            }
+            h1{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+
+    <body  >
+
+        <h1> Custom Event </h1>
+
+        <form  method="GET" name="form1" id="form1">
+
+            <label> Name </label>
+            <input type="text" name="name" id="name"/>
+
+            <br>
+            <br>
+
+            <label> Password </label>
+            <input type="password" name="pass" id="pass"/>
+
+            <br>
+            <br>
+
+            <button type="submit" onsubmit="ask(event)"  id="but"> Submit </button>
+
+        </form>
+
+        <h1 id="fire"> </h1>
+
+        <script src="myjs.js"></script>
+
+    </body>
+
+</html>

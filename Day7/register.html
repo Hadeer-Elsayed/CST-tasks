@@ -1,0 +1,45 @@
+<!DOCTYPEhtml>
+<html>
+    <head>
+        <title>Registeration Page</title>
+        <script src="CookiesLibrary.js"></script>
+    </head>
+    <body>
+        <label style="font-weight: bold;font-size: 20px">Enter your name : &nbsp;</label>
+        <input type="text" id="name" placeholder="name" required><br><br><br>
+        <label style="font-weight: bold;font-size: 20px">Enter your age : &nbsp;</label>
+        <input type="text" id="age" placeholder="age" required><br><br><br>
+        <label style="font-weight: bold;font-size: 20px">Select your gender : &nbsp;</label><br><br><br>
+        <input type="radio" class="gender" value="male" name="gender" required>
+        <label for="male"><img src="1.jpg"></label>
+        <input type="radio" class="gender" value="female" name="gender" required>
+        <label for="female"><img src="2.jpg"></label><br><br><br>
+        <label for="color" style="font-weight: bold;font-size: 20px">Select your favourite color : &nbsp;</label>
+        <select id="color">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+        </select><br><br><br>
+        <input type="submit" value="register" style="margin-left: 200px; display: block" onclick="reg()">
+        
+        <script>
+            function reg(){
+                var name = document.getElementById("name").value,
+                    age = document.getElementById("age").value,
+                    gender = document.getElementsByClassName("gender"),
+                    color = document.getElementById("color").value,
+                    selection;
+                for (var i = 0 ; i < gender.length ;i++){
+                    if(gender[i].checked){ selection = gender[i].value;}
+                }
+                //setcookies with (name,val,expdays)
+                setCookie("name", name, 7);
+                setCookie("age", age, 7);
+                setCookie("gender", selection, 7);
+                setCookie("color", color);
+                setCookie("counter", 1);
+                location.replace("profile.html");
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+  <!DOCTYPEhtml>
+<html>
+    <head>
+        <title>Profile Page</title>
+        <script src="CookiesLibrary.js"></script></head>
+    <body onload="countCookies()">
+        <img id="img">
+        <b id="wel"></b>
+        <b id="uname"></b> 
+        <span id="s1"></span>
+        <b id="count"></b>
+        <span id="s2"></span>
+        <script>
+            if (getCookie("gender") == "male"){
+                document.getElementById("img").src = "1.jpg";
+            } 
+            if (getCookie("gender") == "female") {
+                document.getElementById("img").src = "2.jpg";
+            }
+            function countCookies(){ 
+                var counter = parseInt(getCookie("counter"));
+                document.cookie = "counter="+(counter + 1);
+            }
+            document.getElementById("wel").innerHTML = "Welcome ";
+            document.getElementById("uname").innerHTML = getCookie("name");
+            document.getElementById("uname").style.color = getCookie("color");
+            document.getElementById("s1").innerHTML = " you have visited this site ";
+            document.getElementById("count").innerHTML = getCookie("counter");
+            document.getElementById("count").style.color = getCookie("color");
+            document.getElementById("s2").innerHTML = " times.";
+        </script>
+    </body>
+</html>

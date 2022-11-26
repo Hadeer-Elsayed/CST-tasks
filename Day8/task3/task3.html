@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        .container{
+            width: 400px;height: 400px;background-color: #ccc;
+            position: relative;
+        }
+        img{position: absolute;}
+        p{color: blue;}
+        #yellow{top:40%;left: 0;}
+        #pink{top:40%;right: 0;}
+        #blue{top: 92%;left: 40%;}
+    </style>
+<body>
+    <div class="container">
+        <img id="yellow" src="icon1.gif">
+        <img id="pink" src="icon2.gif">
+        <img id="blue" src="TOP.JPG">
+    </div>
+    <button id="start">start</button>
+    <button id="reset">reset</button>
+
+
+    <p>
+        &lt;img src="./icon1.gif" style="left:<span id="bindLeft"></span> "&gt;  
+    </p>
+    <p>
+        &lt;img src="./icon2.gif" style="left:<span id="bindLeft2"></span> "&gt; 
+    </p>
+</body>
+
+
+    <script>
+        var start=document.getElementById("start");
+        var reset=document.getElementById("reset");
+        var pauseFlag=false;
+        var yellow=document.getElementById("yellow")
+        var pink=document.getElementById("pink")
+        var blue=document.getElementById("blue")
+        var bindLeft=document.getElementById("bindLeft")
+        var bindLeft2=document.getElementById("bindLeft2")
+
+        var speed=50,steps=20,totalSteps=0,state=false;
+        var dir="normal";
+        start.addEventListener("click",()=>{
+            if(!pauseFlag){
+                start.textContent="pause";pauseFlag=true;
+                state=true;
+            }
+            else{
+                start.textContent="continue";
+                pauseFlag=false;
+                state=false;
+            }
+        })
+
+
+        reset.addEventListener("click",()=>{
+            speed=50,steps=20,totalSteps=0,state=false,dir="normal"; 
+            pauseFlag=false;  
+            start.textContent="start";
+            yellow.style.left=0+"px";
+            pink.style.right=0+"px";
+            blue.style.top=360+"px";    
+            bindLeft.innerText=0+"px";
+            bindLeft2.innerText=0+"px";        
+             })
+
+        setInterval(()=>{
+                        if(state){
+                            if(dir=="normal"){
+                                totalSteps+=steps;
+                                yellow.style.left=totalSteps+"px";
+                                pink.style.right=totalSteps+"px";
+                                blue.style.top=totalSteps+"px";
+                                bindLeft.innerText=totalSteps+"px";
+                                bindLeft2.innerText=totalSteps+"px";
+                                if(parseInt(yellow.style.left)>=400) dir="reverse"
+                            }
+                            else if(dir=="reverse"){
+                                totalSteps-=steps;
+                                yellow.style.left=totalSteps+"px";
+                                pink.style.right=totalSteps+"px";
+                                blue.style.top=totalSteps+"px";
+                                bindLeft.innerText=totalSteps+"px";
+                                bindLeft2.innerText=totalSteps+"px";
+                                if(parseInt(yellow.style.left)<=0) dir="normal"
+                            }
+                           
+                        }
+                        
+                    },speed)
+
+    
+
+    </script>
+
+</html>

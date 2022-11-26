@@ -1,0 +1,25 @@
+<!DOCTYPEhtml>
+<html>
+    <head></head>
+    <body onkeydown="myFunction(event)">
+       
+       <!-- <input type="text" onkeydown="myFunction(event)">-->
+        <script>          
+
+            function myFunction(event) {
+                var x = event.keyCode;
+                switch (x) {
+                    case 16 :
+                    alert ("You pressed the Shift key! and it's ascii code is 16");
+                    break;
+                    case 17 :
+                    alert ("You pressed the Ctrl key! and it's ascii code is 17");
+                    break;
+                    case 18 :
+                    alert ("You pressed the Alt key! and it's ascii code is 18");
+                    break;
+                }
+            }
+        </script>
+    </body>
+</html>
